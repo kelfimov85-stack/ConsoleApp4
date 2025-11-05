@@ -248,7 +248,7 @@ namespace ConsoleApp4
 
 
             // задание 3:
-            Console.WriteLine(Encrypt(Console.ReadLine()));
+            //Console.WriteLine(Encrypt(Console.ReadLine()));
 
             //задание 4:
             //double[,] firstMatrix = CreatingMatrix();
@@ -338,31 +338,27 @@ namespace ConsoleApp4
             //}
 
             //7 задание:
-            //string text = Console.ReadLine();
-            //string[] dividedText = text.Split(' ');
-            //string unacceptableWord = Console.ReadLine();
-            //int scor = 0;
-            //int indexDiv = 0;
+            string text = Console.ReadLine();
+            string forbiddenWord = Console.ReadLine();
+            int length = forbiddenWord.Length;
+            string stars = "";
 
-            //foreach (string div in dividedText)
-            //{
-            //    if (div == unacceptableWord)
-            //    {
-            //        indexDiv = Array.IndexOf(dividedText, unacceptableWord);
-            //        Console.WriteLine(indexDiv);
-            //        Console.WriteLine(div);
-            //        dividedText[indexDiv] = "*";
-            //        scor++;
-            //    }
-            //    else continue;
-            //}
-            //foreach (string div in dividedText)
-            //{
-            //    Console.Write(" " + div);
-            //}
-            //Console.WriteLine(" ");
-            //Console.WriteLine($"Найдено запрещённых слов: {scor}");
+            for (int i = 0; i < length; i++)
+            {
+                stars += '*';
+            }
 
+            string[] redactText = text.Split(' ', ',', '.', '!', '?');
+
+            foreach (string i in redactText)
+            {
+                if (i.ToLower() == forbiddenWord.ToLower())
+                {
+                    text = text.Replace(i, stars);
+                }else continue;
+            }
+
+            Console.WriteLine(text);
         }
     }
 }
